@@ -6,8 +6,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 7.2.2', '>= 7.2.2.2'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '>= 1.4'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -39,9 +37,10 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'rollbar'
-gem 'devise', '~> 4.9'
 gem 'simple_form'
 gem 'slim-rails', '~> 3.7.0'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -52,6 +51,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase'
+  gem 'faker'
   gem 'minitest-power_assert'
   gem 'rubocop-performance'
   gem 'sqlite3', '>= 1.4'
@@ -61,6 +61,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
   gem 'slim_lint', require: false
+  gem 'dotenv-rails'
 end
 
 group :test do

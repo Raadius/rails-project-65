@@ -32,8 +32,14 @@ fix-all: rubocop-safe-fix
 run-tests:
 	bundle exec rake test
 
+copy-env:
+	cp -n .env.example .env || true
+
 # prepare project to run locally
 prepare-local:
 	bundle install
 	bundle exec rails db:migrate
 	bundle exec rails db:seed
+	make copy-env
+
+.PHONY: test

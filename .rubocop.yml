@@ -216,3 +216,6 @@ Performance/StringIdentifierArgument:
 
 Performance/Sum:
   Enabled: true
+
+Rails/FindByOrAssignmentMemoization:
+  Enabled: false

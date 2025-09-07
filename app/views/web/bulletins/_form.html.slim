@@ -2,10 +2,16 @@
   .form-inputs.d-flex.flex-column.gap-3
     = f.input :title, label: t('bulletins.form.title')
     = f.input :description, label: t('bulletins.form.description')
-    = f.association :category, label: t('bulletins.form.category'), collection: Category.all
+    = f.association :category,
+            label: t('bulletins.form.category'),
+            collection: Category.all
     - if @bulletin.image.present?
-      = image_tag @bulletin.image.variant(height: 200), class: 'card-img-top x-object-fit-cover'
+      = image_tag @bulletin.image.variant(height: 200),
+              class: 'card-img-top x-object-fit-cover'
     = f.input :image, label: t('bulletins.form.image'), as: :file
 
   .form-actions
-    = f.button :submit, t('bulletins.form.create_button'), class: 'btn btn-primary mt-3', data: { turbo: false }
+    = f.button :submit,
+            t('bulletins.form.create_button'),
+            class: 'btn btn-primary mt-3',
+            data: { turbo: false }

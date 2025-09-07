@@ -5,19 +5,28 @@ nav.navbar.navbar-expand-md.navbar-light.me-auto.border-bottom.container.mb-2.fl
     .collapse.navbar-collapse#navbarToggler
       ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
         li.nav-item.me-2
-          = link_to I18n.t('navbar.home'), root_path, class: 'nav-link text-dark'
+          = link_to I18n.t('navbar.home'),
+                  root_path,
+                  class: 'nav-link text-dark'
         - if user_signed_in?
           li.nav-item
-            = link_to t('navbar.my_bulletins'), bulletins_path, class: 'nav-link text-dark'
+            = link_to t('navbar.my_bulletins'), bulletins_path,
+                    class: 'nav-link text-dark'
           li.nav-item
-            = link_to t('navbar.new_bulletin'), new_bulletin_path, class: 'nav-link text-dark'
+            = link_to t('navbar.new_bulletin'), new_bulletin_path,
+                    class: 'nav-link text-dark'
 
       ul.nav.nav-pills
         - if user_signed_in?
           li.nav-item
-            = button_to t('navbar.logout'), logout_path, method: :delete, data: { turbo: false }, class: "nav-link text-dark"
+            = button_to t('navbar.logout'), logout_path,
+                    method: :delete,
+                    data: { turbo: false },
+                    class: 'nav-link text-dark'
         - else
           li.nav-item
-            = button_to auth_request_path(:github), method: :post, data: { turbo: false }, class: "nav-link text-dark" do
+            = button_to auth_request_path(:github),
+                    method: :post,
+                    data: { turbo: false }, class: 'nav-link text-dark' do
               span.bi.bi-github.me-2
               = t('navbar.sign_in')

@@ -1,0 +1,48 @@
+ru:
+  head:
+    title: "Доска объявлений"
+  navbar:
+    home: "Главная"
+    logout: "Выйти"
+    my_bulletins: "Мои объявления"
+    new_bulletin: "Добавить"
+    sign_in: "Войти"
+  footer:
+    hexlet: "Хекслет"
+  bulletins:
+    list:
+      title: "Объявления"
+      empty: "Пока что объявлений нет"
+    new:
+      title: "Добавить объявление"
+    form:
+      title: "Заголовок"
+      description: "Описание"
+      category: "Категория"
+      image: "Фотография"
+      create_button: "Создать объявление"
+  notices:
+    bulletins:
+      created: "Объявление создано!"
+      create_error: "Ошибка при создании объявления! Попробуйте попытку позже"
+    user:
+      signed_in: "Вы успешно авторизовались!"
+      logged_out: "Вы успешно вышли из аккаунта!"
+      auth_error: "Произошла ошибка при авторизации! Попробуйте попытку позже"
+      not_authorized: "Необходимо войти в систему!"
+  activerecord:
+    errors:
+      models:
+        bulletin:
+          attributes:
+            title:
+              too_short: "Заголовок слишком короткий. Минимум 5 символов."
+              blank: "Заголовок не может быть пустым."
+              too_long: "Заголовок слишком длинный. Максимум 50 символов."
+            description:
+              blank: "Описание не может быть пустым"
+              too_long: "Описание слишком длинное. Максимум 1000 символов"
+            category:
+              required: "Категория не может отсутствовать"
+            image:
+              blank: "Фотография не может отсутствовать"

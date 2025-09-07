@@ -13,15 +13,15 @@ module Web
 
       if user.save!
         sign_in(user)
-        redirect_to root_path, notice: 'Logged in successfully'
+        redirect_to root_path, notice: t('notices.user.signed_in')
       else
-        redirect_to root_path, alert: 'Some error occurred during auth. Try again later'
+        redirect_to root_path, alert: t('notices.user.auth_error')
       end
     end
 
     def destroy
       session[:user_id] = nil
-      redirect_to root_path, notice: 'Successfully logged out!'
+      redirect_to root_path, notice: t('notices.user.logged_out')
     end
   end
 end

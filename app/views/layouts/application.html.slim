@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title = t('head.title')
+    meta[name='viewport' content='width=device-width,initial-scale=1']
+    = csrf_meta_tags
+    = csp_meta_tag
+    = favicon_link_tag 'bulletin-board.png'
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
+
+  body.min-vh-100.d-flex.flex-column
+    = render 'layouts/shared/header'
+
+    main
+      .mt-4.mb-5.pb-5
+        .container
+          = yield
+
+    = render 'layouts/shared/footer'

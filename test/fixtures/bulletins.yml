@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Faker::Coffee.blend_name
+  description: Faker::Coffee.notes
+  category: Coffee
+  user: one
+
+two:
+  title: Faker::Vehicle.make_and_model
+  description: Faker::Lorem.paragraph_by_chars
+  category: Cars
+  user: two

@@ -34,6 +34,7 @@
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actiontext (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionview (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="active_storage_validations (v3.0.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activejob (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
@@ -218,9 +219,6 @@
     <entry key="config/routes.rb">
       <value>file://$MODULE_DIR$/config/routes.rb</value>
     </entry>
-    <entry key="config/secrets">
-      <value>file://$MODULE_DIR$/config</value>
-    </entry>
     <entry key="db">
       <value>file://$MODULE_DIR$/db</value>
     </entry>
@@ -253,6 +251,10 @@
     </entry>
     <entry key="public/stylesheets">
       <value>file://$MODULE_DIR$/public/stylesheets</value>
+    </entry>
+    <entry key="test/mailers/previews">
+      <value>file://$MODULE_DIR$/test/mailers/previews</value>
+      <value>file://$MODULE_DIR$/test/mailers/previews</value>
     </entry>
     <entry key="tmp">
       <value>file://$MODULE_DIR$/tmp</value>

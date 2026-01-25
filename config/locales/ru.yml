@@ -7,6 +7,7 @@ ru:
     my_bulletins: "Мои объявления"
     new_bulletin: "Добавить"
     sign_in: "Войти"
+    admin: "Админка"
   footer:
     hexlet: "Хекслет"
   bulletins:

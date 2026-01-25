@@ -108,6 +108,7 @@
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.2.6, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v6.0.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v6.6.1, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pundit (v2.5.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v3.1.16, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-protection (v4.1.1, rbenv: 3.2.4) [gem]" level="application" />

@@ -6,7 +6,7 @@ class Web::ApplicationController < ApplicationController
   private
 
   def require_authentication
-    user_not_authorized unless signed_in?
+    user_not_authorized unless user_signed_in?
   end
 
   def user_not_authorized

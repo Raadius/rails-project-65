@@ -10,5 +10,11 @@ Rails.application.routes.draw do
 
     resources :bulletins, only: %i[index show new create edit update] do
     end
+
+    namespace :admin do
+      root 'home#index'
+      resources :categories
+      resources :bulletins
+    end
   end
 end

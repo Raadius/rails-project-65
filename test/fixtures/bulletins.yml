@@ -3,11 +3,11 @@
 one:
   title: Faker::Coffee.blend_name
   description: Faker::Coffee.notes
-  category: Coffee
+  category: one
   user: one
 
 two:
   title: Faker::Vehicle.make_and_model
   description: Faker::Lorem.paragraph_by_chars
-  category: Cars
+  category: two
   user: two

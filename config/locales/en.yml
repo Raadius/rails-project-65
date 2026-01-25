@@ -7,6 +7,7 @@ en:
     my_bulletins: "My Bulletins"
     logout: "Logout"
     sign_in: "Sign in"
+    admin: "Admin panel"
   footer:
     hexlet: "Hexlet"
   bulletins:

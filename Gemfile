@@ -41,6 +41,8 @@ gem 'simple_form'
 gem 'slim-rails', '~> 3.7.0'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'aasm'
+gem 'ransack'
 gem 'active_storage_validations'
 gem 'pundit'
 

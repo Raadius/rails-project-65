@@ -1,0 +1,62 @@
+.p-4.align-items-center.border.shadow.bg-white.rounded-3
+  .row
+    .p-3.p-lg-5.pt-lg-0
+      .d-flex.justify-content-between.align-items-center.mb-4
+        div
+          h2 = @bulletin.title
+          p.text-muted = t('bulletin.created_by', name: @bulletin.user.name,
+                  date: l(@bulletin.created_at, format: :short))
+        div
+          span.badge.fs-5 class=state_badge_class(@bulletin.state)
+            = t("bulletin.states.#{@bulletin.state}")
+
+      .mb-3
+        = link_to t('actions.back'), admin_bulletins_path, class: 'btn btn-secondary'
+
+        - if @bulletin.under_moderation?
+          = button_to t('actions.publish'),
+                  publish_admin_bulletin_path(@bulletin),
+                  method: :post,
+                  class: 'btn btn-success',
+                  data: { turbo: false, confirm: t('confirmations.publish') }
+          = button_to t('actions.reject'),
+                  reject_admin_bulletin_path(@bulletin),
+                  method: :post,
+                  class: 'btn btn-danger',
+                  data: { turbo: false, confirm: t('confirmations.reject') }
+
+        - unless @bulletin.archived?
+          = button_to t('actions.archive'),
+                  archive_admin_bulletin_path(@bulletin),
+                  method: :post,
+                  class: 'btn btn-warning',
+                  data: { turbo: false, confirm: t('confirmations.archive') }
+
+      hr
+
+      .row
+        .col-md-6
+          - if @bulletin.image.attached?
+            = image_tag @bulletin.image.variant(resize_to_limit: [600, 400]),
+                    class: 'img-fluid rounded'
+
+        .col-md-6
+          dl.row
+            dt.col-sm-4 = t('admin.show.category')
+            dd.col-sm-8 = @bulletin.category.name
+
+            dt.col-sm-4 = t('admin.show.owner')
+            dd.col-sm-8
+              = @bulletin.user.name
+              br
+              small.text-muted = @bulletin.user.email
+
+            dt.col-sm-4 = t('admin.show.created_at')
+            dd.col-sm-8 = l @bulletin.created_at, format: :short
+
+            dt.col-sm-4 = t('admin.show.updated_at')
+            dd.col-sm-8 = l @bulletin.updated_at, format: :short
+
+      .mt-4
+        h4 = t('admin.show.description')
+        p = @bulletin.description

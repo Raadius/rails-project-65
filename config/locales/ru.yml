@@ -22,15 +22,34 @@ ru:
       category: "Категория"
       image: "Фотография"
       create_button: "Создать объявление"
+  alerts:
+    admin:
+      bulletin_publish_error: "Произошла ошибка при публикации объявления. Повторите попытку позже"
+      bulletin_reject_error: "Произошла ошибка при отклонении объявления. Повторите попытку позже"
+      bulletin_archive_error: "Произошла ошибка при архивации объявления. Повторите попытку позже"
   notices:
     bulletins:
       created: "Объявление создано!"
       create_error: "Ошибка при создании объявления! Попробуйте попытку позже"
+      updated: "Объявление успешно обновлено!"
+      not_found: "Объявление не найдено или у вас нет доступа"
+      submitted_for_moderation: "Объявление отправлено на модерацию"
+      archived: "Объявление архивировано"
+      restored: "Объявление восстановлено из архива"
+      submit_for_moderation_error: 'Не удалось отправить объявление на модерацию. Повторите попытку позже'
+      archive_error: 'Не удалось архивировать объявление. Повторите попытку позже'
+      restore_error: 'Не удалось восстановить объявление. Повторите попытку позже'
+      update_error: 'Не удалось обновить объявление. Повторите попытку позже'
     user:
       signed_in: "Вы успешно авторизовались!"
       logged_out: "Вы успешно вышли из аккаунта!"
       auth_error: "Произошла ошибка при авторизации! Попробуйте попытку позже"
       not_authorized: "Необходимо войти в систему!"
+      not_admin: "Доступ запрещён. Требуются права администратора."
+    admin:
+      bulletin_published: "Объявление успешно опубликовано"
+      bulletin_rejected: "Объявление отклонено"
+      bulletin_archived: "Объявление архивировано"
   activerecord:
     errors:
       models:
@@ -47,3 +66,67 @@ ru:
               required: "Категория не может отсутствовать"
             image:
               blank: "Фотография не может отсутствовать"
+  profile:
+    title: 'Мой профиль'
+    no_bulletins: "У вас пока нет объявлений"
+    table:
+      title: "Название"
+      category: "Категория"
+      state: "Статус"
+      created_at: "Создано"
+      actions: "Действия"
+    search:
+      placeholder: "Искать по названию объявления"
+      state_placeholder: "По состоянию"
+      submit: "Искать"
+      reset: "Сброс"
+      all_states: "Все"
+  bulletin:
+    states:
+      draft: "Черновик"
+      under_moderation: "На модерации"
+      published: "Опубликовано"
+      rejected: "Отклонено"
+      archived: "В архиве"
+    created_by: "Создано %{name} %{date}"
+  admin:
+    bulletins:
+      title: "Управление объявлениями"
+      no_bulletins: "Объявлений не найдено"
+    filters:
+      all: "Все"
+      under_moderation: "На модерации"
+      published: "Опубликованные"
+      draft: "Черновики"
+      rejected: "Отклонённые"
+      archived: "В архиве"
+    table:
+      title: "Название"
+      user: "Пользователь"
+      category: "Категория"
+      state: "Статус"
+      created_at: "Создано"
+      actions: "Действия"
+    show:
+      category: "Категория"
+      owner: "Владелец"
+      created_at: "Создано"
+      updated_at: "Обновлено"
+      description: "Описание"
+  actions:
+    view: "Просмотр"
+    edit: "Редактировать"
+    archive: "В архив"
+    restore: "Восстановить"
+    submit_moderation: "Отправить на модерацию"
+    publish: "Опубликовать"
+    reject: "Отклонить"
+    back: "Назад"
+  confirmations:
+    submit_moderation: "Вы уверены, что хотите отправить объявление на модерацию?"
+    archive: "Вы уверены, что хотите архивировать объявление?"
+    publish: "Вы уверены, что хотите опубликовать объявление?"
+    reject: "Вы уверены, что хотите отклонить объявление?"
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"

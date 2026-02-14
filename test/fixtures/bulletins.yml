@@ -1,13 +1,36 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+draft_bulletin:
   title: Faker::Coffee.blend_name
   description: Faker::Coffee.notes
   category: one
   user: one
+  state: draft
 
-two:
+under_moderation_bulletin:
   title: Faker::Vehicle.make_and_model
   description: Faker::Lorem.paragraph_by_chars
   category: two
   user: two
+  state: under_moderation
+
+published_bulletin:
+  title: Faker::Vehicle.make_and_model
+  description: Faker::Lorem.paragraph_by_chars
+  category: one
+  user: one
+  state: published
+
+rejected_bulletin:
+  title: Faker::Coffee.blend_name
+  description: Faker::Lorem.paragraph_by_chars
+  category: two
+  user: two
+  state: rejected
+
+archived_bulletin:
+  title: Faker::Vehicle.make_and_model
+  description: Faker::Coffee.notes
+  category: one
+  user: one
+  state: archived

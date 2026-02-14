@@ -7,3 +7,8 @@ two:
   name: Admin User
   email: admin@example.com
   admin: true
+
+three:
+  name: Other User
+  email: other@example.com
+  admin: false

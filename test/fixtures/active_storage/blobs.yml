@@ -1,0 +1,39 @@
+draft_bulletin_image:
+  key: draft_bulletin_image
+  filename: fixture_image.jpg
+  content_type: image/jpeg
+  service_name: test
+  byte_size: 1000
+  checksum: "d41d8cd98f00b204e9800998ecf8427e"
+
+under_moderation_bulletin_image:
+  key: under_moderation_bulletin_image
+  filename: fixture_image.jpg
+  content_type: image/jpeg
+  service_name: test
+  byte_size: 1000
+  checksum: "d41d8cd98f00b204e9800998ecf8427e"
+
+published_bulletin_image:
+  key: published_bulletin_image
+  filename: fixture_image.jpg
+  content_type: image/jpeg
+  service_name: test
+  byte_size: 1000
+  checksum: "d41d8cd98f00b204e9800998ecf8427e"
+
+rejected_bulletin_image:
+  key: rejected_bulletin_image
+  filename: fixture_image.jpg
+  content_type: image/jpeg
+  service_name: test
+  byte_size: 1000
+  checksum: "d41d8cd98f00b204e9800998ecf8427e"
+
+archived_bulletin_image:
+  key: archived_bulletin_image
+  filename: fixture_image.jpg
+  content_type: image/jpeg
+  service_name: test
+  byte_size: 1000
+  checksum: "d41d8cd98f00b204e9800998ecf8427e"

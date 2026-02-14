@@ -1,0 +1,79 @@
+.p-4.align-items-center.border.shadow.bg-white.rounded-3
+  .row
+    .p-3.p-lg-5.pt-lg-0
+      .mb-4
+        h2 = t('profile.title')
+        p.text-muted = current_user.email
+
+      .mb-3
+        = link_to t('bulletins.new.title'), new_bulletin_path, class: 'btn btn-primary'
+
+      = search_form_for @q, url: profile_path, method: :get, class: 'mb-3', data: { turbo: false }  do |f|
+        .row.g-3.align-items-end
+          .col-md-5
+            = f.label :title_cont, t('profile.search.placeholder'), class: 'form_label'
+            = f.search_field :title_cont, class: 'form-control', placeholder: t('profile.search.placeholder')
+          .col-md-4
+            = f.label :state_eq, t('profile.search.state_placeholder'), class: 'form_label'
+            = f.select :state_eq, Bulletin.aasm.states.map { |s| [t("bulletin.states.#{s.name}"), s.name] },
+                    { include_blank: t('profile.search.all_states') }, class: 'form-select'
+          .col-md-3
+            = f.submit t('profile.search.submit'), class: 'btn btn-primary'
+            = link_to t('profile.search.reset'), profile_path, class: 'btn btn-outline-primary ms-2'
+
+      hr
+
+      .table-responsive
+        table.table.table-hover
+          thead
+            tr
+              th = t('profile.table.title')
+              th = t('profile.table.category')
+              th = t('profile.table.state')
+              th = t('profile.table.created_at')
+              th = t('profile.table.actions')
+          tbody
+            - @bulletins.each do |bulletin|
+              tr
+                td
+                  = link_to bulletin.title, bulletin_path(bulletin)
+                td
+                  = bulletin.category.name
+                td
+                  span.badge class=state_badge_class(bulletin.state)
+                    = t("bulletin.states.#{bulletin.state}")
+                td
+                  = l bulletin.created_at, format: :short
+                td
+                  .btn-group role="group"
+                    = link_to t('actions.view'), bulletin_path(bulletin), class: 'btn btn-sm btn-outline-primary'
+                    - if bulletin.draft?
+                      = link_to t('actions.edit'), edit_bulletin_path(bulletin),
+                              class: 'btn btn-sm btn-outline-secondary'
+                      = button_to t('actions.submit_moderation'),
+                              submit_for_moderation_bulletin_path(bulletin),
+                              method: :post,
+                              class: 'btn btn-sm btn-success',
+                              data: { turbo: false, confirm: t('confirmations.submit_moderation') }
+
+                    - if bulletin.rejected?
+                      = link_to t('actions.edit'), bulletin_path(bulletin), class: 'btn btn-sm btn-outline-primary'
+                      = button_to t('actions.submit_moderation'),
+                              submit_for_moderation_bulletin_path(bulletin),
+                              method: :post,
+                              class: 'btn btn-sm btn-success',
+                              data: { turbo: false }
+
+                    - unless bulletin.archived?
+                      = button_to t('actions.archive'),
+                              archive_bulletin_path(bulletin),
+                              method: :post,
+                              class: 'btn btn-sm btn-warning',
+                              data: { turbo: false, confirm: t('confirmations.archive') }
+
+                    - if bulletin.archived?
+                      = button_to t('actions.restore'),
+                              restore_from_archive_bulletin_path(bulletin),
+                              method: :post,
+                              class: 'btn btn-sm btn-info',
+                              data: { turbo: false }

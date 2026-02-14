@@ -22,15 +22,34 @@ en:
       category: "Category"
       image: "Image"
       create_button: "Create bulletin"
+  alerts:
+    admin:
+      bulletin_publish_error: "An error occurred while publishing bulletin. Try again later"
+      bulletin_reject_error: "An error occurred while rejecting bulletin. Try again later"
+      bulletin_archive_error: "An error occurred while archiving bulletin. Try again later"
   notices:
     bulletins:
       created: "Bulletin created!"
-      create_error: "Some error occurred during bulletin creation. Try again later"
+      create_error: "An error occurred during bulletin creation. Try again later"
+      updated: "Bulletin updated!"
+      update_error: "n error occurred while updating bulletin. Try again later"
+      not_found: "Bulletin not found"
+      submitted_for_moderation: "Bulletin submitted for moderation successfully!"
+      archived: "Bulletin archived successfully"
+      restored: "Bulletin restored successfully"
+      submit_for_moderation_error: 'An error occurred during sending bulletin for moderation. Try again later'
+      archive_error: 'An error occurred during archiving bulletin. Try again later'
+      restore_error: 'An error occurred while restoring bulletin. Try again later'
     user:
       signed_in: "Successfully signed in!"
       logged_out: "Successfully signed out!"
       auth_error: "Some error occurred during authentification. Try again later"
       not_authorized: "You are not authorized!"
+      not_admin: "Access restricted. Only admins allowed."
+    admin:
+      bulletin_published: "Bulletin published successfully"
+      bulletin_rejected: "Bulletin rejected successfully"
+      bulletin_archived: "Bulletin archived successfully"
   activerecord:
     errors:
       models:
@@ -47,3 +66,67 @@ en:
               required: "Category can't be blank"
             image:
               blank: "Image can't be blank"
+  profile:
+    title: 'Profile page'
+    no_bulletins: "You don't have any of bulletins yet!"
+    table:
+      title: "Name"
+      category: "Category"
+      state: "Status"
+      created_at: "Created at"
+      actions: "Actions"
+    search:
+      placeholder: "Search by bulletin titles"
+      state_placeholder: "Search by state"
+      submit: "Search"
+      reset: "Reset"
+      all_states: "All"
+  bulletin:
+    states:
+      draft: "Draft"
+      under_moderation: "On moderation"
+      published: "Published"
+      rejected: "Rejected"
+      archived: "Archived"
+    created_by: "Created by %{name} at %{date}"
+  admin:
+    bulletins:
+      title: "Manage bulletins"
+      no_bulletins: "Bulletins not found"
+    filters:
+      all: "All"
+      under_moderation: "On moderation"
+      published: "Published"
+      draft: "Draft"
+      rejected: "Rejected"
+      archived: "Archived"
+    table:
+      title: "Name"
+      user: "User"
+      category: "Category"
+      state: "Status"
+      created_at: "Created at"
+      actions: "Actions"
+    show:
+      category: "Category"
+      owner: "Owner"
+      created_at: "Created at"
+      updated_at: "Updated at"
+      description: "Description"
+  actions:
+    view: "View"
+    edit: "Edit"
+    archive: "Archive"
+    restore: "Restore"
+    submit_moderation: "Send for moderation"
+    publish: "Publish"
+    reject: "Reject"
+    back: "Back"
+  confirmations:
+    submit_moderation: "Are you sure you want to send bulletin for moderation?"
+    archive: "Are you sure you want to archive this bulletin?"
+    publish: "Are you sure you want to publish this bulletin?"
+    reject: "Are yous sure you want to reject this bulletin?"
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"

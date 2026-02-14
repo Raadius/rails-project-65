@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-md.navbar-light.me-auto.border-bottom.container.mb-2.fl
                   class: 'nav-link text-dark'
         - if user_signed_in?
           li.nav-item
-            = link_to t('navbar.my_bulletins'), bulletins_path,
+            = link_to t('navbar.my_bulletins'), profile_path,
                     class: 'nav-link text-dark'
           li.nav-item
             = link_to t('navbar.new_bulletin'), new_bulletin_path,

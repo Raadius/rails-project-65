@@ -1,0 +1,24 @@
+draft_bulletin_image:
+  name: image
+  record: draft_bulletin (Bulletin)
+  blob: draft_bulletin_image
+
+under_moderation_bulletin_image:
+  name: image
+  record: under_moderation_bulletin (Bulletin)
+  blob: under_moderation_bulletin_image
+
+published_bulletin_image:
+  name: image
+  record: published_bulletin (Bulletin)
+  blob: published_bulletin_image
+
+rejected_bulletin_image:
+  name: image
+  record: rejected_bulletin (Bulletin)
+  blob: rejected_bulletin_image
+
+archived_bulletin_image:
+  name: image
+  record: archived_bulletin (Bulletin)
+  blob: archived_bulletin_image

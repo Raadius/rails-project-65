@@ -8,13 +8,27 @@ Rails.application.routes.draw do
 
     root 'bulletins#index'
 
+    resource 'profile', only: %i[show]
+
     resources :bulletins, only: %i[index show new create edit update] do
+      member do
+        post :submit_for_moderation, controller: 'bulletin_states', action: 'submit_for_moderation'
+        post :archive, controller: 'bulletin_states', action: 'archive'
+        post :restore_from_archive, controller: 'bulletin_states', action: 'restore_from_archive'
+      end
     end
 
     namespace :admin do
       root 'home#index'
       resources :categories
-      resources :bulletins
+
+      resources :bulletins, only: %i[index show] do
+        member do
+          post :publish
+          post :reject
+          post :archive
+        end
+      end
     end
   end
 end

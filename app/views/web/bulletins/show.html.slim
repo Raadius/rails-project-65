@@ -1,0 +1,17 @@
+h2 = @bulletin.title
+
+.mb-3
+  span.badge class=state_badge_class(@bulletin.state)
+    = t("bulletin.states.#{@bulletin.state}")
+
+- if @bulletin.image.attached?
+  .mb-3
+    = image_tag @bulletin.image.variant(resize_to_limit: [600, 400]), class: 'img-fluid rounded'
+p = @bulletin.description
+
+dl.row
+  dt.col-sm-3 = t('profile.table.category')
+  dd.col-sm-9 = @bulletin.category.name
+
+  dt.col-sm-3 = t('profile.table.created_at')
+  dd.col-sm-9 = l @bulletin.created_at, format: :short

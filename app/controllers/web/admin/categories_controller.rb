@@ -2,6 +2,5 @@
 
 module Web
   class Admin::CategoriesController < Admin::ApplicationController
-
   end
 end

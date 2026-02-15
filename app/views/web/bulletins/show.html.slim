@@ -1,17 +1,22 @@
-h2 = @bulletin.title
+.p-4.border.shadow.bg-white.rounded-3
+  h2 = @bulletin.title
+  hr
 
-.mb-3
-  span.badge class=state_badge_class(@bulletin.state)
-    = t("bulletin.states.#{@bulletin.state}")
+  .row
+    .col-md-6
+      - if @bulletin.image.attached?
+        = image_tag @bulletin.image, class: 'img-fluid rounded'
+    .col-md-6
+      .card
+        .card-body
+          h5.card-title = @bulletin.user.name
+          p.card-text
+            span.badge class=state_badge_class(@bulletin.state)
+              = t("bulletin.states.#{@bulletin.state}")
+          p.card-text
+            small.text-muted = @bulletin.category.name
+          p.card-text
+            small.text-muted = l @bulletin.created_at, format: :short
 
-- if @bulletin.image.attached?
-  .mb-3
-    = image_tag @bulletin.image.variant(resize_to_limit: [600, 400]), class: 'img-fluid rounded'
-p = @bulletin.description
-
-dl.row
-  dt.col-sm-3 = t('profile.table.category')
-  dd.col-sm-9 = @bulletin.category.name
-
-  dt.col-sm-3 = t('profile.table.created_at')
-  dd.col-sm-9 = l @bulletin.created_at, format: :short
+  .mt-4
+    p = @bulletin.description

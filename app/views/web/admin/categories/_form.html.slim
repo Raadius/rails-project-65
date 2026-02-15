@@ -1,0 +1,5 @@
+= simple_form_for [:admin, @category] do |f|
+  .mb-3
+    = f.input :name, label: t('admin.categories.category_name')
+  = f.submit class: 'btn btn-primary'
+  = link_to t('actions.back'), admin_categories_path, class: 'btn btn-outline-secondary ms-2'

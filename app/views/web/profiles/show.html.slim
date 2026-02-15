@@ -45,11 +45,11 @@
                 td
                   = l bulletin.created_at, format: :short
                 td
-                  .btn-group role="group"
+                  .d-flex.gap-1.flex-wrap
                     = link_to t('actions.view'), bulletin_path(bulletin), class: 'btn btn-sm btn-outline-primary'
+                    = link_to t('actions.edit'), edit_bulletin_path(bulletin),
+                            class: 'btn btn-sm btn-outline-secondary'
                     - if bulletin.draft?
-                      = link_to t('actions.edit'), edit_bulletin_path(bulletin),
-                              class: 'btn btn-sm btn-outline-secondary'
                       = button_to t('actions.submit_moderation'),
                               submit_for_moderation_bulletin_path(bulletin),
                               method: :post,
@@ -57,7 +57,6 @@
                               data: { turbo: false, confirm: t('confirmations.submit_moderation') }
 
                     - if bulletin.rejected?
-                      = link_to t('actions.edit'), bulletin_path(bulletin), class: 'btn btn-sm btn-outline-primary'
                       = button_to t('actions.submit_moderation'),
                               submit_for_moderation_bulletin_path(bulletin),
                               method: :post,

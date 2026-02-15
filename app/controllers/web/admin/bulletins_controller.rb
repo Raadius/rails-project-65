@@ -3,7 +3,6 @@
 module Web
   class Admin::BulletinsController < Admin::ApplicationController
     before_action :set_bulletin, only: %i[show publish reject archive]
-    before_action :require_admin!
 
     def index
       @bulletins = Bulletin.includes(:category, :user).recent
@@ -41,12 +40,6 @@ module Web
 
     def set_bulletin
       @bulletin = Bulletin.find(params[:id])
-    end
-
-    def require_admin!
-      unless user_admin?
-        redirect_to root_path, alert: t('notices.user.not_admin')
-      end
     end
   end
 end

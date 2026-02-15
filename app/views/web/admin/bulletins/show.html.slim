@@ -13,6 +13,7 @@
       .mb-3
         = link_to t('actions.back'), admin_bulletins_path, class: 'btn btn-secondary'
 
+      .d-flex.gap-1.flex-wrap
         - if @bulletin.under_moderation?
           = button_to t('actions.publish'),
                   publish_admin_bulletin_path(@bulletin),

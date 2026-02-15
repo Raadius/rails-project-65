@@ -1,0 +1,29 @@
+.row
+  .col-3
+    = render 'web/admin/shared/sidebar'
+  .col-9
+    h2 = t('admin.categories.title')
+
+    .mb-3
+      = link_to t('admin.categories.new_title'), new_admin_category_path, class: 'btn btn-primary'
+
+    hr
+
+    table.table.table-hover
+      thead
+        tr
+          th = t('admin.categories.table.title.id')
+          th = t('admin.categories.table.title.name')
+          th = t('admin.categories.table.title.actions')
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.id
+            td = category.name
+            td
+              .d-flex.gap-1.flex-wrap
+                = link_to t('actions.edit'), edit_admin_category_path(category),
+                        class: 'btn btn-sm btn-outline-secondary'
+                = button_to t('actions.destroy'), admin_category_path(category),
+                          method: :delete, class: 'btn btn-sm btn-danger',
+                          data: { turbo: false, confirm: t('confirmations.delete_category') }

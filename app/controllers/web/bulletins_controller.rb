@@ -34,7 +34,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def update
     if @bulletin.update(permitted_params)
-      redirect_to bulletin_path(@bulletin), notice: t('notices.bulletins.updated')
+      redirect_to profile_path, notice: t('notices.bulletins.updated')
     else
       render :edit, status: :unprocessable_entity, alert: t('notices.bulletins.update_error')
     end

@@ -66,9 +66,11 @@
     <orderEntry type="library" scope="TEST" name="faker (v3.5.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v2.13.4, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.4.1, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.3, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hashie (v5.0.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="image_processing (v1.14.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.15.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.14.1, rbenv: 3.2.4) [gem]" level="application" />
@@ -82,6 +84,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.4, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.3, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_magick (v5.3.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.5, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="minitest-power_assert (v0.3.1, rbenv: 3.2.4) [gem]" level="application" />
@@ -120,6 +123,7 @@
     <orderEntry type="library" scope="TEST" name="rails-controller-testing (v1.0.5, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.3.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.2, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-i18n (v7.0.10, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.2.2.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.3.0, rbenv: 3.2.4) [gem]" level="application" />
@@ -135,6 +139,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.33.3, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="rubocop-rails-omakase (v1.1.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-vips (v2.3.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v3.0.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="selenium-webdriver (v4.35.0, rbenv: 3.2.4) [gem]" level="application" />

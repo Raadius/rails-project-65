@@ -1,0 +1,10 @@
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    = link_to t('admin.sidebar.moderation'), admin_root_path,
+        class: "nav-link link-dark #{'active' if controller_name == 'home'}"
+  li.nav-item
+    = link_to t('admin.sidebar.all_bulletins'), admin_bulletins_path,
+          class: "nav-link link-dark #{'active' if controller_name == 'bulletins'}"
+  li.nav-item
+    = link_to t('admin.sidebar.all_categories'), admin_categories_path,
+          class: "nav-link link-dark #{'active' if controller_name == 'categories'}"

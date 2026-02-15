@@ -22,11 +22,14 @@ ru:
       category: "Категория"
       image: "Фотография"
       create_button: "Создать объявление"
+    edit:
+      title: "Редактирование объявления"
   alerts:
     admin:
       bulletin_publish_error: "Произошла ошибка при публикации объявления. Повторите попытку позже"
       bulletin_reject_error: "Произошла ошибка при отклонении объявления. Повторите попытку позже"
       bulletin_archive_error: "Произошла ошибка при архивации объявления. Повторите попытку позже"
+      category_has_bulletins: "Вы не можете удалить категорию, у которой есть связанные с ней объявления!"
   notices:
     bulletins:
       created: "Объявление создано!"
@@ -50,6 +53,13 @@ ru:
       bulletin_published: "Объявление успешно опубликовано"
       bulletin_rejected: "Объявление отклонено"
       bulletin_archived: "Объявление архивировано"
+      category_created: "Категория успешно создана"
+      category_create_error: "Произошла ошибка при создании категории. Повторите попытку позже"
+      category_updated: "Категория успешно обновлена"
+      category_update_error: "Произошла ошибка при обновлении категории. Повторите попытку позже"
+      category_not_found: "Категория не найдена"
+      category_destroyed: "Категория успешно удалена"
+      category_destroy_error: "Произошла ошибка при удалении категории. Повторите попытку позже"
   activerecord:
     errors:
       models:
@@ -90,6 +100,8 @@ ru:
       archived: "В архиве"
     created_by: "Создано %{name} %{date}"
   admin:
+    home:
+      title: "Объявления на модерации"
     bulletins:
       title: "Управление объявлениями"
       no_bulletins: "Объявлений не найдено"
@@ -113,20 +125,44 @@ ru:
       created_at: "Создано"
       updated_at: "Обновлено"
       description: "Описание"
+    sidebar:
+      moderation: "Объявления на модерации"
+      all_bulletins: "Все объявления"
+      all_categories: "Все категории"
+    categories:
+      title: "Категории"
+      new_title: "Добавить новую категорию"
+      category_name: "Название категории"
+      edit_title: "Редактирование категории"
+      table:
+        title:
+          id: "ID"
+          name: "Название категории"
+          actions: "Действия"
   actions:
     view: "Просмотр"
     edit: "Редактировать"
     archive: "В архив"
     restore: "Восстановить"
-    submit_moderation: "Отправить на модерацию"
+    submit_moderation: "На модерацию"
     publish: "Опубликовать"
     reject: "Отклонить"
     back: "Назад"
+    destroy: "Удалить"
   confirmations:
     submit_moderation: "Вы уверены, что хотите отправить объявление на модерацию?"
     archive: "Вы уверены, что хотите архивировать объявление?"
     publish: "Вы уверены, что хотите опубликовать объявление?"
     reject: "Вы уверены, что хотите отклонить объявление?"
+    delete_category: "Вы уверены, что хотите удалить категорию?"
   time:
     formats:
       short: "%d.%m.%Y %H:%M"
+  helpers:
+    submit:
+      category:
+        create: "Создать категорию"
+        update: "Обновить категорию"
+      bulletin:
+        create: "Создать объявления"
+        update: "Обновить объявление"

@@ -22,11 +22,14 @@ en:
       category: "Category"
       image: "Image"
       create_button: "Create bulletin"
+    edit:
+      title: "Edit bulletin"
   alerts:
     admin:
       bulletin_publish_error: "An error occurred while publishing bulletin. Try again later"
       bulletin_reject_error: "An error occurred while rejecting bulletin. Try again later"
       bulletin_archive_error: "An error occurred while archiving bulletin. Try again later"
+      category_has_bulletins: "You can't delete category with linked bulletins!"
   notices:
     bulletins:
       created: "Bulletin created!"
@@ -50,6 +53,13 @@ en:
       bulletin_published: "Bulletin published successfully"
       bulletin_rejected: "Bulletin rejected successfully"
       bulletin_archived: "Bulletin archived successfully"
+      category_created: "Category created successfully"
+      category_create_error: "An error occurred during category creation. Try again later"
+      category_updated: "Category updated successfully"
+      category_update_error: "An error occurred during category update. Try again later"
+      category_not_found: "Category not found"
+      category_destroyed: "Category destroyed successfully"
+      category_destroy_error: "An error occurred during category destruction. Try again later"
   activerecord:
     errors:
       models:
@@ -90,6 +100,8 @@ en:
       archived: "Archived"
     created_by: "Created by %{name} at %{date}"
   admin:
+    home:
+      title: "Bulletins on moderation"
     bulletins:
       title: "Manage bulletins"
       no_bulletins: "Bulletins not found"
@@ -113,6 +125,20 @@ en:
       created_at: "Created at"
       updated_at: "Updated at"
       description: "Description"
+    sidebar:
+      moderation: "Bulletins on moderation"
+      all_bulletins: "All bulletins"
+      all_categories: "All categories"
+    categories:
+      title: "Categories"
+      new_title: "Add new category"
+      category_name: "Category name"
+      edit_title: "Edit category"
+      table:
+        title:
+          id: "ID"
+          name: "Category name"
+          actions: "Actions"
   actions:
     view: "View"
     edit: "Edit"
@@ -122,11 +148,13 @@ en:
     publish: "Publish"
     reject: "Reject"
     back: "Back"
+    destroy: "Delete"
   confirmations:
     submit_moderation: "Are you sure you want to send bulletin for moderation?"
     archive: "Are you sure you want to archive this bulletin?"
     publish: "Are you sure you want to publish this bulletin?"
     reject: "Are yous sure you want to reject this bulletin?"
+    delete_category: "Are you sure you want to delete this category?"
   time:
     formats:
       short: "%d.%m.%Y %H:%M"

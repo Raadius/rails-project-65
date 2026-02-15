@@ -1,0 +1,30 @@
+.row
+  .col-md-3
+    = render 'web/admin/shared/sidebar'
+  .col-md-9
+    h2 = t('admin.home.title')
+
+    hr
+
+    table.table
+      thead
+        tr
+          th = t('admin.table.title')
+          th = t('admin.table.created_at')
+          th = t('admin.table.actions')
+      tbody
+        - @bulletins.each do |bulletin|
+          tr
+            td = link_to bulletin.title, admin_bulletin_path(bulletin)
+            td = l bulletin.created_at, format: :short
+            td
+              .d-flex.gap-1.flex-wrap
+                = link_to t('actions.publish'), publish_admin_bulletin_path(bulletin), method: :post,
+                      class: 'btn btn-sm btn-success',
+                      data: { turbo: false }
+                = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), method: :post,
+                      class: 'btn btn-sm btn-danger',
+                      data: { turbo: false }
+                = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), method: :post,
+                      class: 'btn btn-sm btn-warning',
+                      data: { turbo: false }

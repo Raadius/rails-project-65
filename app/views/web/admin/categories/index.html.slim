@@ -27,3 +27,5 @@
                 = button_to t('actions.destroy'), admin_category_path(category),
                           method: :delete, class: 'btn btn-sm btn-danger',
                           data: { turbo: false, confirm: t('confirmations.delete_category') }
+
+    = paginate @categories

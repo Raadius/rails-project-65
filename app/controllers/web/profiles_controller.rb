@@ -5,6 +5,7 @@ class Web::ProfilesController < Web::ApplicationController
 
   def show
     @q = current_user.bulletins.recent.includes(:category).ransack(params[:q])
-    @bulletins = @q.result
+    @bulletins = @q.result.page(params[:page])
+    @search_presenter = SearchFormPresenters::ProfileSearchPresenter.new
   end
 end

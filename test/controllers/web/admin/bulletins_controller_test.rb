@@ -46,10 +46,10 @@ module Web
         assert_select 'table'
       end
 
-      test 'admin should filter bulletins by state' do
+      test 'admin should filter bulletins by state via ransack' do
         sign_in(@admin)
 
-        get admin_bulletins_url(state: 'under_moderation')
+        get admin_bulletins_url, params: { q: { state_eq: 'under_moderation' } }
 
         assert_response :success
       end
@@ -116,6 +116,28 @@ module Web
         assert_response :success
 
         get admin_bulletin_url(@published_bulletin)
+        assert_response :success
+      end
+
+      test 'admin should search bulletins by title' do
+        sign_in(@admin)
+        get admin_bulletins_url, params: { q: { title_cont: @moderation_bulletin.title } }
+
+        assert_response :success
+        assert_select 'a', text: @moderation_bulletin.title
+      end
+
+      test 'admin should show search form' do
+        sign_in(@admin)
+        get admin_bulletins_url
+
+        assert_select 'form input[name=?]', 'q[title_cont]'
+        assert_select 'form select[name=?]', 'q[state_eq]'
+      end
+
+      test "should paginate admin bulletins" do
+        sign_in(@admin)
+        get admin_bulletins_url, params: { page: 1 }
         assert_response :success
       end
     end

@@ -6,6 +6,8 @@
 
     hr
 
+    = render 'layouts/shared/search_form', presenter: @search_presenter
+
     table.table.table-hover
       thead
         tr
@@ -26,3 +28,5 @@
                 = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
                         method: :post, class: 'btn btn-sm btn-warning',
                         data: { turbo: false, confirm: t('confirmations.archive') }
+
+    = paginate @bulletins

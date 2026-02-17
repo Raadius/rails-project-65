@@ -5,8 +5,10 @@ module Web
     before_action :set_bulletin, only: %i[show publish reject archive]
 
     def index
-      @bulletins = Bulletin.includes(:category, :user).recent
+      @q = Bulletin.includes(:category, :user).recent.ransack(params[:q])
+      @bulletins = @q.result.page(params[:page])
       @bulletins = @bulletins.where(state: params[:state]) if params[:state].present?
+      @search_presenter = SearchFormPresenters::AdminBulletinsSearchPresenter.new
     end
 
     def show

@@ -82,5 +82,35 @@ module Web
       assert bulletin.draft?
       assert_redirected_to profile_path
     end
+
+    test 'should filter bulletins by title' do
+      get root_url, params: { q: { title_cont: @published_bulletin.title } }
+
+      assert_response :success
+      assert_select 'a', text: @published_bulletin.title
+    end
+
+    test 'should filter bulletins by category' do
+      get root_url, params: { q: { category_id_eq: @published_bulletin.category_id } }
+      assert_response :success
+    end
+
+    test 'should return no results for non-matching search' do
+      get root_url, params: { q: { title_cont: 'несуществующее_объявление_xyz' } }
+      assert_response :success
+      assert_select '.card', count: 0
+    end
+
+    test 'should show search form on index' do
+      get root_url
+      assert_response :success
+      assert_select 'form input[name=?]', 'q[title_cont]'
+      assert_select 'form select[name=?]', 'q[category_id_eq]'
+    end
+
+    test "should paginate bulletins on index" do
+      get bulletins_url, params: { page: 1 }
+      assert_response :success
+    end
   end
 end

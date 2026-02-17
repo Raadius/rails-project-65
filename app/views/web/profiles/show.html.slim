@@ -8,18 +8,7 @@
       .mb-3
         = link_to t('bulletins.new.title'), new_bulletin_path, class: 'btn btn-primary'
 
-      = search_form_for @q, url: profile_path, method: :get, class: 'mb-3', data: { turbo: false }  do |f|
-        .row.g-3.align-items-end
-          .col-md-5
-            = f.label :title_cont, t('profile.search.placeholder'), class: 'form_label'
-            = f.search_field :title_cont, class: 'form-control', placeholder: t('profile.search.placeholder')
-          .col-md-4
-            = f.label :state_eq, t('profile.search.state_placeholder'), class: 'form_label'
-            = f.select :state_eq, Bulletin.aasm.states.map { |s| [t("bulletin.states.#{s.name}"), s.name] },
-                    { include_blank: t('profile.search.all_states') }, class: 'form-select'
-          .col-md-3
-            = f.submit t('profile.search.submit'), class: 'btn btn-primary'
-            = link_to t('profile.search.reset'), profile_path, class: 'btn btn-outline-primary ms-2'
+      = render 'layouts/shared/search_form', presenter: @search_presenter
 
       hr
 
@@ -76,3 +65,4 @@
                               method: :post,
                               class: 'btn btn-sm btn-info',
                               data: { turbo: false }
+        = paginate @bulletins

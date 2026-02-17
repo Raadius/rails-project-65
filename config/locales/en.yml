@@ -85,12 +85,6 @@ en:
       state: "Status"
       created_at: "Created at"
       actions: "Actions"
-    search:
-      placeholder: "Search by bulletin titles"
-      state_placeholder: "Search by state"
-      submit: "Search"
-      reset: "Reset"
-      all_states: "All"
   bulletin:
     states:
       draft: "Draft"
@@ -158,3 +152,11 @@ en:
   time:
     formats:
       short: "%d.%m.%Y %H:%M"
+  search:
+    title_placeholder: "By bulletin titles"
+    state_placeholder: "By state"
+    category_placeholder: "By category"
+    all_states: "All states"
+    all_categories: "All categories"
+    submit: "Search"
+    reset: "Reset"

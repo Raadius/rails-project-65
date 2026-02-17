@@ -40,11 +40,13 @@ user2 = User.find_or_create_by!(email: 'user2@example.com') do |user|
   user.admin = true
 end
 
-categories = %w[Электроника Авто Недвижимость Одежда Спорт].map do |name|
+categories = %w[Электроника Авто Недвижимость Одежда Спорт Мебель Книги Игрушки Инструменты Сад
+                 Кухня Красота Здоровье Питомцы Путешествия Музыка Фото Видео Компьютеры Телефоны
+                 Планшеты Часы Украшения Сумки Обувь Аксессуары Продукты Напитки Канцелярия Хобби].map do |name|
   Category.find_or_create_by!(name: name)
 end
 
-3.times do
+30.times do
   create_bulletin(
     title: Faker::Commerce.product_name.truncate(50),
     description: Faker::Lorem.paragraph(sentence_count: 5),
@@ -55,7 +57,7 @@ end
 end
 
 [user1, user2].each do |user|
-  2.times do
+  15.times do
     create_bulletin(
       title: Faker::Commerce.product_name.truncate(50),
       description: Faker::Lorem.paragraph(sentence_count: 3),
@@ -66,7 +68,7 @@ end
   end
 end
 
-10.times do
+30.times do
   create_bulletin(
     title: Faker::Commerce.product_name.truncate(50),
     description: Faker::Lorem.paragraph(sentence_count: 4),

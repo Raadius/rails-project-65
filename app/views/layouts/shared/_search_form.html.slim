@@ -1,0 +1,13 @@
+= search_form_for @q, url: presenter.url, method: :get, class: 'mb-3', data: { turbo: false } do |f|
+  .row.g-3.align-items-end
+    .col-md-5
+      = f.label :title_cont, t('search.title_placeholder'), class: 'form-label'
+      = f.search_field :title_cont, class: 'form-control', placeholder: t('search.title_placeholder')
+    - if presenter.select?
+      .col-md-4
+        = f.label presenter.select_field, presenter.select_label, class: 'form-label'
+        = f.select presenter.select_field, presenter.select_options,
+                { include_blank: presenter.select_blank }, class: 'form-select'
+    .col-md-3
+      = f.submit t('search.submit'), class: 'btn btn-primary'
+      = link_to t('search.reset'), presenter.url, class: 'btn btn-outline-secondary ms-2'

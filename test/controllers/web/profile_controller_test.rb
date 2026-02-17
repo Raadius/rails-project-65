@@ -45,5 +45,30 @@ module Web
       assert_response :success
       assert_select 'form[action=?]', archive_bulletin_path(bulletins(:draft_bulletin))
     end
+
+    test 'should filter profile bulletins by title' do
+      sign_in(@user)
+      get profile_url, params: { q: { title_cont: bulletins(:draft_bulletin).title } }
+      assert_response :success
+    end
+
+    test 'should filter profile bulletins by state' do
+      sign_in(@user)
+      get profile_url, params: { q: { state_eq: 'draft' } }
+      assert_response :success
+    end
+
+    test 'should show search form on profile' do
+      sign_in(@user)
+      get profile_url
+      assert_select 'form input[name=?]', 'q[title_cont]'
+      assert_select 'form select[name=?]', 'q[state_eq]'
+    end
+
+    test "should paginate bulletins on profile" do
+      sign_in(@user)
+      get profile_url, params: { page: 1 }
+      assert_response :success
+    end
   end
 end

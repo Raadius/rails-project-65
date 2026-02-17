@@ -6,8 +6,10 @@ class Web::BulletinsController < Web::ApplicationController
   before_action :auth_bulletin_owner, only: %i[edit update]
 
   def index
-    @bulletins = Bulletin.published_only.recent.includes(:category, :user)
+    @q = Bulletin.published_only.recent.includes(:category, :user).ransack(params[:q])
+    @bulletins = @q.result.page(params[:page])
     @categories = Category.all
+    @search_presenter = SearchFormPresenters::BulletinsSearchPresenter.new(@categories)
   end
 
   def show

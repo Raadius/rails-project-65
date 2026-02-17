@@ -85,12 +85,6 @@ ru:
       state: "Статус"
       created_at: "Создано"
       actions: "Действия"
-    search:
-      placeholder: "Искать по названию объявления"
-      state_placeholder: "По состоянию"
-      submit: "Искать"
-      reset: "Сброс"
-      all_states: "Все"
   bulletin:
     states:
       draft: "Черновик"
@@ -166,3 +160,12 @@ ru:
       bulletin:
         create: "Создать объявления"
         update: "Обновить объявление"
+  search:
+    title_placeholder: "Искать по названию объявления"
+    state_placeholder: "По состоянию"
+    category_placeholder: "По категории"
+    all_states: "Все"
+    all_categories: "Все категории"
+    submit: "Искать"
+    reset: "Сброс"
+

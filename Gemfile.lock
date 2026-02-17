@@ -182,8 +182,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.1)
-      prism (~> 1.5)
+    minitest (5.27.0)
     minitest-power_assert (0.3.1)
       minitest
       power_assert (>= 1.1)
@@ -457,6 +456,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
+  minitest (~> 5.0)
   minitest-power_assert
   omniauth-github
   omniauth-rails_csrf_protection

@@ -109,7 +109,7 @@ module Web
         assert_equal I18n.t('alerts.admin.category_has_bulletins'), flash[:alert]
       end
 
-      test "should paginate categories" do
+      test 'should paginate categories' do
         sign_in(@admin)
         get admin_categories_url, params: { page: 1 }
         assert_response :success

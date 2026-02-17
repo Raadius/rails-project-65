@@ -135,7 +135,7 @@ module Web
         assert_select 'form select[name=?]', 'q[state_eq]'
       end
 
-      test "should paginate admin bulletins" do
+      test 'should paginate admin bulletins' do
         sign_in(@admin)
         get admin_bulletins_url, params: { page: 1 }
         assert_response :success

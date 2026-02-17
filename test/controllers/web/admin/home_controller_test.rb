@@ -39,7 +39,7 @@ module Web
         assert_select 'a[href=?]', admin_bulletin_path(bulletins(:archived_bulletin)), count: 0
       end
 
-      test "should paginate moderation bulletins" do
+      test 'should paginate moderation bulletins' do
         sign_in(@admin)
         get admin_root_url, params: { page: 1 }
         assert_response :success

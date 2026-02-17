@@ -65,7 +65,7 @@ module Web
       assert_select 'form select[name=?]', 'q[state_eq]'
     end
 
-    test "should paginate bulletins on profile" do
+    test 'should paginate bulletins on profile' do
       sign_in(@user)
       get profile_url, params: { page: 1 }
       assert_response :success

@@ -108,7 +108,7 @@ module Web
       assert_select 'form select[name=?]', 'q[category_id_eq]'
     end
 
-    test "should paginate bulletins on index" do
+    test 'should paginate bulletins on index' do
       get bulletins_url, params: { page: 1 }
       assert_response :success
     end

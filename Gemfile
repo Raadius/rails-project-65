@@ -48,6 +48,7 @@ gem 'pundit'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'minitest', '~> 5.0'
+gem 'faker'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -58,7 +59,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase'
-  gem 'faker'
   gem 'minitest-power_assert'
   gem 'rubocop-performance'
   gem 'sqlite3', '>= 1.4'

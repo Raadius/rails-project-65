@@ -19,7 +19,7 @@ module Web
 
       test 'should redirect unauthenticated user' do
         get admin_categories_url
-        assert_redirected_to auth_request_path(:github)
+        assert_redirected_to root_path
       end
 
       test 'admin should see categories list' do

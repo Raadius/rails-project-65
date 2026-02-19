@@ -33,7 +33,7 @@ module Web
       test 'should redirect unauthenticated user to auth' do
         get admin_bulletins_url
 
-        assert_redirected_to auth_request_path(:github)
+        assert_redirected_to root_path
       end
 
       # Тесты index

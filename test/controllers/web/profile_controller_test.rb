@@ -10,7 +10,7 @@ module Web
 
     test 'should redirect to sign in when not authenticated' do
       get profile_path
-      assert_redirected_to auth_request_path(:github)
+      assert_redirected_to root_path
     end
 
     test 'should show profile page when user is signed in' do

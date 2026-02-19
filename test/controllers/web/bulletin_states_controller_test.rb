@@ -36,7 +36,7 @@ module Web
     test 'should redirect to auth if not signed in' do
       post submit_for_moderation_bulletin_path(@draft_bulletin)
 
-      assert_redirected_to auth_request_path(:github)
+      assert_redirected_to root_path
     end
 
     test 'should archive bulletin' do

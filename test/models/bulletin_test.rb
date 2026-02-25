@@ -87,8 +87,8 @@ class BulletinTest < ActiveSupport::TestCase
     assert archived_bulletin.draft?
   end
 
-  test 'published only scope returns only published bulletins' do
-    published = Bulletin.published_only
+  test 'published scope returns only published bulletins' do
+    published = Bulletin.published
 
     assert_includes published, bulletins(:published_bulletin)
     assert_not_includes published, bulletins(:archived_bulletin)
@@ -97,8 +97,8 @@ class BulletinTest < ActiveSupport::TestCase
     assert_not_includes published, bulletins(:draft_bulletin)
   end
 
-  test 'for_moderation scope returns only bulletins under moderation' do
-    under_moderation = Bulletin.for_moderation
+  test 'under_moderation scope returns only bulletins under moderation' do
+    under_moderation = Bulletin.under_moderation
 
     assert_includes under_moderation, bulletins(:under_moderation_bulletin)
     assert_not_includes under_moderation, bulletins(:draft_bulletin)

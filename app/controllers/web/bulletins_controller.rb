@@ -4,7 +4,7 @@ class Web::BulletinsController < Web::ApplicationController
   before_action :require_authentication, only: %i[new create submit_for_moderation archive restore_from_archive]
 
   def index
-    @q = Bulletin.published_only.recent.includes(:category, :user).ransack(params[:q])
+    @q = Bulletin.published.order(created_at: :desc).includes(:category, :user).ransack(params[:q])
     @bulletins = @q.result.page(params[:page])
     @categories = Category.all
     @search_presenter = SearchFormPresenters::BulletinsSearchPresenter.new(@categories)
@@ -49,22 +49,24 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin, :to_moderate?
 
-    if @bulletin.submit_for_moderation!
-      redirect_to profile_path, notice: t('notices.bulletins.submitted_for_moderation')
-    else
-      redirect_to profile_path, alert: t('notices.bulletins.submit_for_moderation_error')
-    end
+    return redirect_back fallback_location: root_path,
+                         notice:
+                           t('notices.bulletins.submit_for_moderation_error') unless @bulletin.may_submit_for_moderation?
+
+    @bulletin.submit_for_moderation!
+    redirect_to profile_path, notice: t('notices.bulletins.submitted_for_moderation')
   end
 
   def archive
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
-    if @bulletin.archive!
-      redirect_to profile_path, notice: t('notices.bulletins.archived')
-    else
-      redirect_to profile_path, alert: t('notices.bulletins.archive_error')
-    end
+    return redirect_back fallback_location: root_path,
+                         notice: t('notices.bulletins.archive_error') unless @bulletin.may_archive?
+
+
+    @bulletin.archive!
+    redirect_to profile_path, notice: t('notices.bulletins.archived')
   end
 
   def restore_from_archive

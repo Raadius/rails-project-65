@@ -47,10 +47,4 @@ class Bulletin < ApplicationRecord
       transitions from: :archived, to: :draft
     end
   end
-
-  # Scopes для удобной выборки
-  scope :published_only, -> { where(state: 'published') }
-  scope :for_moderation, -> { where(state: 'under_moderation') }
-  scope :by_user, ->(user) { where(user: user) }
-  scope :recent, -> { order(created_at: :desc) }
 end

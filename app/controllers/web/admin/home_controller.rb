@@ -3,7 +3,7 @@
 module Web
   class Admin::HomeController < Admin::ApplicationController
     def index
-      @bulletins = Bulletin.for_moderation.recent.includes(:category).page(params[:page])
+      @bulletins = Bulletin.under_moderation.order(created_at: :desc).includes(:category).page(params[:page])
     end
   end
 end

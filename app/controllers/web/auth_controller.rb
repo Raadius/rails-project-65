@@ -19,6 +19,10 @@ module Web
       end
     end
 
+    def failure
+      redirect_to root_path, alert: t('notices.user.auth_error')
+    end
+
     def destroy
       session[:user_id] = nil
       redirect_to root_path, notice: t('notices.user.logged_out')

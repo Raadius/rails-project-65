@@ -17,8 +17,9 @@ module Web
     def publish
       @bulletin = Bulletin.find(params[:id])
 
-      redirect_to admin_bulletins_path,
-                  alert: t('alerts.admin.bulletin_publish_error') unless @bulletin.may_publish?
+      unless @bulletin.may_publish?
+        redirect_back fallback_location: root_path, alert: t('alerts.admin.bulletin_publish_error')
+      end
 
       @bulletin.publish!
       redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_published')
@@ -27,8 +28,9 @@ module Web
     def reject
       @bulletin = Bulletin.find(params[:id])
 
-      redirect_to admin_bulletins_path,
-                  alert: t('alerts.admin.bulletin_reject_error') unless @bulletin.may_reject?
+      unless @bulletin.may_reject?
+        redirect_back fallback_location: root_path, alert: t('alerts.admin.bulletin_reject_error')
+      end
 
       @bulletin.reject!
       redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_rejected')
@@ -37,8 +39,9 @@ module Web
     def archive
       @bulletin = Bulletin.find(params[:id])
 
-      redirect_to admin_bulletins_path,
-                  alert: t('alerts.admin.bulletin_archive_error') unless @bulletin.may_archive?
+      unless @bulletin.may_archive?
+        redirect_back fallback_location: root_path, alert: t('alerts.admin.bulletin_archive_error')
+      end
 
       @bulletin.archive!
       redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_archived')

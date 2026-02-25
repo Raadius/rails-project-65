@@ -19,7 +19,7 @@ module Web
         get admin_bulletins_url
 
         assert_redirected_to root_path
-        assert_equal I18n.t('notices.user.not_admin'), flash[:alert]
+        assert_equal I18n.t('notices.user.not_authorized'), flash[:alert]
       end
 
       test 'should allow admin to access bulletins' do

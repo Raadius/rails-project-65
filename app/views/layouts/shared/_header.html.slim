@@ -8,7 +8,7 @@ nav.navbar.navbar-expand-md.navbar-light.me-auto.border-bottom.container.mb-2.fl
           = link_to I18n.t('navbar.home'),
                   root_path,
                   class: 'nav-link text-dark'
-        - if user_signed_in?
+        - if current_user
           li.nav-item
             = link_to t('navbar.my_bulletins'), profile_path,
                     class: 'nav-link text-dark'
@@ -17,13 +17,13 @@ nav.navbar.navbar-expand-md.navbar-light.me-auto.border-bottom.container.mb-2.fl
                     class: 'nav-link text-dark'
 
       ul.nav.nav-pills
-        - if user_admin?
+        - if policy(:user).admin?
           li.nav-item
             = link_to t('navbar.admin'), admin_root_path,
                     method: :get,
                     data: { turbo: false },
                     class: 'nav-link text-dark'
-        - if user_signed_in?
+        - if current_user
           li.nav-item
             = button_to t('navbar.logout'), logout_path,
                     method: :delete,

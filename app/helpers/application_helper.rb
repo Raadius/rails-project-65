@@ -3,8 +3,6 @@
 module ApplicationHelper
   def state_badge_class(state)
     case state
-    when 'draft'
-      'bg-secondary'
     when 'under_moderation'
       'bg-warning text-dark'
     when 'published'

@@ -21,7 +21,7 @@
                     method: :patch,
                     class: 'btn btn-success',
                     form: { data: { turbo: false } },
-                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    onclick: 'return confirm(this.dataset.confirmMessage)',
                     data: { confirm_message: t('confirmations.publish') }
           - if @bulletin.may_reject?
             = button_to t('actions.reject'),
@@ -29,7 +29,7 @@
                     method: :patch,
                     class: 'btn btn-danger',
                     form: { data: { turbo: false } },
-                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    onclick: 'return confirm(this.dataset.confirmMessage)',
                     data: { confirm_message: t('confirmations.reject') }
 
           - if @bulletin.may_archive?
@@ -38,7 +38,7 @@
                     method: :patch,
                     class: 'btn btn-warning',
                     form: { data: { turbo: false } },
-                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    onclick: 'return confirm(this.dataset.confirmMessage)',
                     data: { confirm_message: t('confirmations.archive') }
 
       hr

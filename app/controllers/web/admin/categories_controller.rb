@@ -23,7 +23,7 @@ module Web
       if @category.save
         redirect_to admin_categories_path, notice: t('notices.admin.category_created')
       else
-        render :new, status: :unprocessable_entity, alert: t('notices.admin.category_create_error')
+        render :new, status: :unprocessable_content, alert: t('notices.admin.category_create_error')
       end
     end
 
@@ -32,7 +32,7 @@ module Web
       if @category.update(category_params)
         redirect_to admin_categories_path, notice: t('notices.admin.category_updated')
       else
-        render :edit, status: :unprocessable_entity, alert: t('notices.admin.category_update_error')
+        render :edit, status: :unprocessable_content, alert: t('notices.admin.category_update_error')
       end
     end
 

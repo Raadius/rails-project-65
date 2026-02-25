@@ -3,6 +3,7 @@
 module SearchFormPresenters
   class BulletinsSearchPresenter < SearchFormPresenter
     def initialize(categories)
+      super
       @url = Rails.application.routes.url_helpers.root_path
       @categories = categories
     end

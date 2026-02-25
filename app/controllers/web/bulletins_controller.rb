@@ -30,7 +30,7 @@ class Web::BulletinsController < Web::ApplicationController
     if @bulletin.save
       redirect_to bulletin_path(@bulletin), notice: t('notices.bulletins.created')
     else
-      render :new, status: :unprocessable_entity, alert: t('notices.bulletins.create_error')
+      render :new, status: :unprocessable_content, alert: t('notices.bulletins.create_error')
     end
   end
 
@@ -41,7 +41,7 @@ class Web::BulletinsController < Web::ApplicationController
     if @bulletin.update(permitted_params)
       redirect_to bulletin_path(@bulletin), notice: t('notices.bulletins.updated')
     else
-      render :edit, status: :unprocessable_entity, alert: t('notices.bulletins.update_error')
+      render :edit, status: :unprocessable_content, alert: t('notices.bulletins.update_error')
     end
   end
 
@@ -57,8 +57,10 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
-    return redirect_back fallback_location: profile_path,
-                         notice: t('notices.bulletins.archive_error') unless @bulletin.may_archive?
+    unless @bulletin.may_archive?
+      return redirect_back fallback_location: profile_path,
+                           notice: t('notices.bulletins.archive_error')
+    end
 
     @bulletin.archive!
     redirect_to profile_path, notice: t('notices.bulletins.archived')

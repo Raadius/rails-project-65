@@ -20,7 +20,7 @@ class BulletinPolicy
 
   def update?
     return true if @user&.admin?
-    
+
     @bulletin.user == @user && (@bulletin.draft? || @bulletin.rejected?)
   end
 

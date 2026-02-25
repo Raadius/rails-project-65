@@ -17,13 +17,13 @@ rescue ActiveRecord::RecordInvalid => e
 end
 
 def attach_placeholder_image(bulletin)
-  unless bulletin.image.attached?
-    bulletin.image.attach(
-      io: Rails.root.join("app/assets/images/default-image.png").open,
-      filename: 'placeholder.png',
-      content_type: 'image/png'
-    )
-  end
+  return if bulletin.image.attached?
+
+  bulletin.image.attach(
+    io: Rails.root.join('app/assets/images/default-image.png').open,
+    filename: 'placeholder.png',
+    content_type: 'image/png'
+  )
 end
 
 admin = User.find_or_create_by!(email: 'raadius@yandex.ru') do |user|
@@ -41,8 +41,8 @@ user2 = User.find_or_create_by!(email: 'user2@example.com') do |user|
 end
 
 categories = %w[Электроника Авто Недвижимость Одежда Спорт Мебель Книги Игрушки Инструменты Сад
-                 Кухня Красота Здоровье Питомцы Путешествия Музыка Фото Видео Компьютеры Телефоны
-                 Планшеты Часы Украшения Сумки Обувь Аксессуары Продукты Напитки Канцелярия Хобби].map do |name|
+                Кухня Красота Здоровье Питомцы Путешествия Музыка Фото Видео Компьютеры Телефоны
+                Планшеты Часы Украшения Сумки Обувь Аксессуары Продукты Напитки Канцелярия Хобби].map do |name|
   Category.find_or_create_by!(name: name)
 end
 

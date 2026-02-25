@@ -23,19 +23,19 @@
                       method: :patch,
                       class: 'btn btn-sm btn-success',
                       form: { data: { turbo: false } },
-                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      onclick: 'return confirm(this.dataset.confirmMessage)',
                       data: { confirm_message: t('confirmations.publish') }
                 = button_to t('actions.reject'), reject_admin_bulletin_path(bulletin),
                       method: :patch,
                       class: 'btn btn-sm btn-danger',
                       form: { data: { turbo: false } },
-                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      onclick: 'return confirm(this.dataset.confirmMessage)',
                       data: { confirm_message: t('confirmations.reject') }
                 = button_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
                       method: :patch,
                       class: 'btn btn-sm btn-warning',
                       form: { data: { turbo: false } },
-                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      onclick: 'return confirm(this.dataset.confirmMessage)',
                       data: { confirm_message: t('confirmations.archive') }
 
     = paginate @bulletins

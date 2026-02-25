@@ -49,7 +49,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin, :to_moderate?
 
-    return redirect_back fallback_location: root_path,
+    return redirect_back fallback_location: profile_path,
                          notice:
                            t('notices.bulletins.submit_for_moderation_error') unless @bulletin.may_submit_for_moderation?
 
@@ -61,7 +61,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
-    return redirect_back fallback_location: root_path,
+    return redirect_back fallback_location: profile_path,
                          notice: t('notices.bulletins.archive_error') unless @bulletin.may_archive?
 
     @bulletin.archive!

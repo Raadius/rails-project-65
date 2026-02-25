@@ -62,7 +62,7 @@ module Web
 
         post publish_admin_bulletin_path(@moderation_bulletin)
 
-        assert_redirected_to admin_bulletins_path
+        assert_redirected_to admin_root_url
         @moderation_bulletin.reload
         assert @moderation_bulletin.published?
       end
@@ -85,7 +85,7 @@ module Web
 
         post reject_admin_bulletin_path(@moderation_bulletin)
 
-        assert_redirected_to admin_bulletins_path
+        assert_redirected_to admin_root_url
         @moderation_bulletin.reload
         assert @moderation_bulletin.rejected?
       end

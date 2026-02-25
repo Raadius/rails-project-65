@@ -19,14 +19,14 @@
             td = l bulletin.created_at, format: :short
             td
               .d-flex.gap-1.flex-wrap
-                = link_to t('actions.publish'), publish_admin_bulletin_path(bulletin),
+                = button_to t('actions.publish'), publish_admin_bulletin_path(bulletin),
                       class: 'btn btn-sm btn-success',
-                      data: { turbo_method: :post, turbo_confirm: t('confirmations.publish') }
-                = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin),
+                      data: { turbo_confirm: t('confirmations.publish') }
+                = button_to t('actions.reject'), reject_admin_bulletin_path(bulletin),
                       class: 'btn btn-sm btn-danger',
-                      data: { turbo_method: :post, turbo_confirm: t('confirmations.reject') }
-                = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
+                      data: { turbo_confirm: t('confirmations.reject') }
+                = button_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
                       class: 'btn btn-sm btn-warning',
-                      data: { turbo_method: :post, turbo_confirm: t('confirmations.archive') }
+                      data: { turbo_confirm: t('confirmations.archive') }
 
     = paginate @bulletins

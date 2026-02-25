@@ -24,14 +24,6 @@ class BulletinPolicy
     @bulletin.user == @user && (@bulletin.draft? || @bulletin.rejected?)
   end
 
-  def create?
-    @user.present?
-  end
-
-  def new?
-    create?
-  end
-
   def author?
     @bulletin.user == @user
   end

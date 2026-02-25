@@ -2,7 +2,6 @@
 
 class Web::BulletinsController < Web::ApplicationController
   before_action :require_authentication, only: %i[new create submit_for_moderation archive restore_from_archive]
-  before_action :set_bulletin, only: %i[show edit update submit_for_moderation archive restore_from_archive]
 
   def index
     @q = Bulletin.published_only.recent.includes(:category, :user).ransack(params[:q])
@@ -12,23 +11,21 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def show
-    unless policy(@bulletin).show?
-      redirect_to root_path, alert: t('notices.bulletins.not_found')
-    end
+    @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
   end
 
   def new
     @bulletin = Bulletin.new
-    authorize @bulletin, :new?
   end
 
   def edit
+    @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
   end
 
   def create
     @bulletin = current_user.bulletins.build(permitted_params)
-    authorize @bulletin, :create?
 
     if @bulletin.save
       redirect_to profile_path, notice: t('notices.bulletins.created')
@@ -38,6 +35,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def update
+    @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
     if @bulletin.update(permitted_params)
@@ -48,6 +46,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def submit_for_moderation
+    @bulletin = Bulletin.find(params[:id])
     authorize @bulletin, :to_moderate?
 
     if @bulletin.submit_for_moderation!
@@ -58,6 +57,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def archive
+    @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
     if @bulletin.archive!
@@ -68,6 +68,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def restore_from_archive
+    @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 
     if @bulletin.restore_from_archive!
@@ -81,9 +82,5 @@ class Web::BulletinsController < Web::ApplicationController
 
   def permitted_params
     params.require(:bulletin).permit(:title, :description, :category_id, :image)
-  end
-
-  def set_bulletin
-    @bulletin = Bulletin.find(params[:id])
   end
 end

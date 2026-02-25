@@ -52,7 +52,7 @@ module Web
       get bulletin_url(@draft_bulletin)
 
       assert_redirected_to root_path
-      assert_equal I18n.t('notices.bulletins.not_found'), flash[:alert]
+      assert_equal I18n.t('notices.user.not_authorized'), flash[:alert]
     end
 
     test 'admin can view any bulletin' do

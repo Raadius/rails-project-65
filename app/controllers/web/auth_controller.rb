@@ -13,7 +13,7 @@ module Web
       user.admin = true if user.new_record?
 
       if user.save!
-        sign_in(user)
+        session[:user_id] = user.id
         redirect_to root_path, notice: t('notices.user.signed_in')
       else
         redirect_to root_path, alert: t('notices.user.auth_error')

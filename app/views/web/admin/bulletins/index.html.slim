@@ -25,9 +25,8 @@
             td = l bulletin.created_at, format: :short
             td
               - unless bulletin.archived?
-F xnj
-                = button_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
-                        method: :post, class: 'btn btn-sm btn-warning',
-                        data: { turbo: false, confirm: t('confirmations.archive') }
+                = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
+                        class: 'btn btn-sm btn-warning',
+                        data: { turbo_method: :post, turbo_confirm: t('confirmations.archive') }
 
     = paginate @bulletins

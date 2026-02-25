@@ -15,23 +15,20 @@
 
       .d-flex.gap-1.flex-wrap
         - if @bulletin.under_moderation?
-          = button_to t('actions.publish'),
+          = link_to t('actions.publish'),
                   publish_admin_bulletin_path(@bulletin),
-                  method: :post,
                   class: 'btn btn-success',
-                  data: { turbo: false, confirm: t('confirmations.publish') }
-          = button_to t('actions.reject'),
+                  data: { turbo_method: :post, turbo_confirm: t('confirmations.publish') }
+          = link_to t('actions.reject'),
                   reject_admin_bulletin_path(@bulletin),
-                  method: :post,
                   class: 'btn btn-danger',
-                  data: { turbo: false, confirm: t('confirmations.reject') }
+                  data: { turbo_method: :post, turbo_confirm: t('confirmations.reject') }
 
         - unless @bulletin.archived?
-          = button_to t('actions.archive'),
+          = link_to t('actions.archive'),
                   archive_admin_bulletin_path(@bulletin),
-                  method: :post,
                   class: 'btn btn-warning',
-                  data: { turbo: false, confirm: t('confirmations.archive') }
+                  data: { turbo_method: :post, turbo_confirm: t('confirmations.archive') }
 
       hr
 

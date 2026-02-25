@@ -26,7 +26,10 @@
             td
               - unless bulletin.archived?
                 = button_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
+                        method: :patch,
                         class: 'btn btn-sm btn-warning',
-                        data: { turbo_confirm: t('confirmations.archive') }
+                        form: { data: { turbo: false } },
+                        onclick: "return confirm(this.dataset.confirmMessage)",
+                        data: { confirm_message: t('confirmations.archive') }
 
     = paginate @bulletins

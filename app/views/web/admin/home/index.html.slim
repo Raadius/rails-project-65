@@ -20,13 +20,22 @@
             td
               .d-flex.gap-1.flex-wrap
                 = button_to t('actions.publish'), publish_admin_bulletin_path(bulletin),
+                      method: :patch,
                       class: 'btn btn-sm btn-success',
-                      data: { turbo_confirm: t('confirmations.publish') }
+                      form: { data: { turbo: false } },
+                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      data: { confirm_message: t('confirmations.publish') }
                 = button_to t('actions.reject'), reject_admin_bulletin_path(bulletin),
+                      method: :patch,
                       class: 'btn btn-sm btn-danger',
-                      data: { turbo_confirm: t('confirmations.reject') }
+                      form: { data: { turbo: false } },
+                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      data: { confirm_message: t('confirmations.reject') }
                 = button_to t('actions.archive'), archive_admin_bulletin_path(bulletin),
+                      method: :patch,
                       class: 'btn btn-sm btn-warning',
-                      data: { turbo_confirm: t('confirmations.archive') }
+                      form: { data: { turbo: false } },
+                      onclick: "return confirm(this.dataset.confirmMessage)",
+                      data: { confirm_message: t('confirmations.archive') }
 
     = paginate @bulletins

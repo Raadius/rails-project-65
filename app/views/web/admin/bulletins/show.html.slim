@@ -15,20 +15,31 @@
 
       .d-flex.gap-1.flex-wrap
         - if @bulletin.under_moderation?
-          = button_to t('actions.publish'),
-                  publish_admin_bulletin_path(@bulletin),
-                  class: 'btn btn-success',
-                  data: { turbo_confirm: t('confirmations.publish') }
-          = button_to t('actions.reject'),
-                  reject_admin_bulletin_path(@bulletin),
-                  class: 'btn btn-danger',
-                  data: { turbo_confirm: t('confirmations.reject') }
+          - if @bulletin.may_publish?
+            = button_to t('actions.publish'),
+                    publish_admin_bulletin_path(@bulletin),
+                    method: :patch,
+                    class: 'btn btn-success',
+                    form: { data: { turbo: false } },
+                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    data: { confirm_message: t('confirmations.publish') }
+          - if @bulletin.may_reject?
+            = button_to t('actions.reject'),
+                    reject_admin_bulletin_path(@bulletin),
+                    method: :patch,
+                    class: 'btn btn-danger',
+                    form: { data: { turbo: false } },
+                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    data: { confirm_message: t('confirmations.reject') }
 
-        - unless @bulletin.archived?
-          = button_to t('actions.archive'),
-                  archive_admin_bulletin_path(@bulletin),
-                  class: 'btn btn-warning',
-                  data: { turbo_confirm: t('confirmations.archive') }
+          - if @bulletin.may_archive?
+            = button_to t('actions.archive'),
+                    archive_admin_bulletin_path(@bulletin),
+                    method: :patch,
+                    class: 'btn btn-warning',
+                    form: { data: { turbo: false } },
+                    onclick: "return confirm(this.dataset.confirmMessage)",
+                    data: { confirm_message: t('confirmations.archive') }
 
       hr
 

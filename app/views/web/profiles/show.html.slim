@@ -40,29 +40,33 @@
                             class: 'btn btn-sm btn-outline-secondary'
                     - if bulletin.draft?
                       = button_to t('actions.submit_moderation'),
-                              submit_for_moderation_bulletin_path(bulletin),
-                              method: :post,
+                              to_moderate_bulletin_path(bulletin),
+                              method: :patch,
                               class: 'btn btn-sm btn-success',
-                              data: { turbo: false, confirm: t('confirmations.submit_moderation') }
+                              form: { data: { turbo: false } },
+                              onclick: "return confirm(this.dataset.confirmMessage)",
+                              data: { confirm_message: t('confirmations.submit_moderation') }
 
                     - if bulletin.rejected?
                       = button_to t('actions.submit_moderation'),
-                              submit_for_moderation_bulletin_path(bulletin),
-                              method: :post,
+                              to_moderate_bulletin_path(bulletin),
+                              method: :patch,
                               class: 'btn btn-sm btn-success',
-                              data: { turbo: false }
+                              form: { data: { turbo: false } }
 
                     - unless bulletin.archived?
                       = button_to t('actions.archive'),
                               archive_bulletin_path(bulletin),
-                              method: :post,
+                              method: :patch,
                               class: 'btn btn-sm btn-warning',
-                              data: { turbo: false, confirm: t('confirmations.archive') }
+                              form: { data: { turbo: false } },
+                              onclick: "return confirm(this.dataset.confirmMessage)",
+                              data: { confirm_message: t('confirmations.archive') }
 
                     - if bulletin.archived?
                       = button_to t('actions.restore'),
                               restore_from_archive_bulletin_path(bulletin),
-                              method: :post,
+                              method: :patch,
                               class: 'btn btn-sm btn-info',
-                              data: { turbo: false }
+                              form: { data: { turbo: false } }
         = paginate @bulletins

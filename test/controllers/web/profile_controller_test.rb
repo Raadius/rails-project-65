@@ -34,7 +34,7 @@ module Web
       get profile_url
 
       assert_response :success
-      assert_select 'form[action=?]', submit_for_moderation_bulletin_path(bulletins(:draft_bulletin))
+      assert_select 'form[action=?]', to_moderate_bulletin_path(bulletins(:draft_bulletin))
     end
 
     test 'should show archive button for non-archived bulletins' do

@@ -28,7 +28,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = current_user.bulletins.build(permitted_params)
 
     if @bulletin.save
-      redirect_to profile_path, notice: t('notices.bulletins.created')
+      redirect_to bulletin_path(@bulletin), notice: t('notices.bulletins.created')
     else
       render :new, status: :unprocessable_entity, alert: t('notices.bulletins.create_error')
     end
@@ -39,19 +39,15 @@ class Web::BulletinsController < Web::ApplicationController
     authorize @bulletin
 
     if @bulletin.update(permitted_params)
-      redirect_to profile_path, notice: t('notices.bulletins.updated')
+      redirect_to bulletin_path(@bulletin), notice: t('notices.bulletins.updated')
     else
       render :edit, status: :unprocessable_entity, alert: t('notices.bulletins.update_error')
     end
   end
 
-  def submit_for_moderation
+  def to_moderate
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin, :to_moderate?
-
-    return redirect_back fallback_location: profile_path,
-                         notice:
-                           t('notices.bulletins.submit_for_moderation_error') unless @bulletin.may_submit_for_moderation?
 
     @bulletin.submit_for_moderation!
     redirect_to profile_path, notice: t('notices.bulletins.submitted_for_moderation')

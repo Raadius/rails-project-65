@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
     resources :bulletins, only: %i[index show new create edit update] do
       member do
-        post :submit_for_moderation
-        post :archive
-        post :restore_from_archive
+        patch :to_moderate
+        patch :archive
+        patch :restore_from_archive
       end
     end
 
@@ -23,11 +23,11 @@ Rails.application.routes.draw do
       root 'home#index'
       resources :categories
 
-      resources :bulletins, only: %i[index show] do
+      resources :bulletins, only: %i[index show destroy] do
         member do
-          post :publish
-          post :reject
-          post :archive
+          patch :publish
+          patch :reject
+          patch :archive
         end
       end
     end

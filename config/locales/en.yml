@@ -29,6 +29,7 @@ en:
       bulletin_publish_error: "An error occurred while publishing bulletin. Try again later"
       bulletin_reject_error: "An error occurred while rejecting bulletin. Try again later"
       bulletin_archive_error: "An error occurred while archiving bulletin. Try again later"
+      bulletin_destroy_error: "An error occurred while destroying bulletin. Try again later"
       category_has_bulletins: "You can't delete category with linked bulletins!"
   notices:
     bulletins:
@@ -53,6 +54,7 @@ en:
       bulletin_published: "Bulletin published successfully"
       bulletin_rejected: "Bulletin rejected successfully"
       bulletin_archived: "Bulletin archived successfully"
+      bulletin_destroyed: "Bulletin destroyed successfully"
       category_created: "Category created successfully"
       category_create_error: "An error occurred during category creation. Try again later"
       category_updated: "Category updated successfully"

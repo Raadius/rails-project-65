@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
     resources :bulletins, only: %i[index show new create edit update] do
       member do
-        post :submit_for_moderation, controller: 'bulletin_states', action: 'submit_for_moderation'
-        post :archive, controller: 'bulletin_states', action: 'archive'
-        post :restore_from_archive, controller: 'bulletin_states', action: 'restore_from_archive'
+        post :submit_for_moderation
+        post :archive
+        post :restore_from_archive
       end
     end
 

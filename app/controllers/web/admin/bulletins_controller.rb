@@ -12,9 +12,11 @@ module Web
     end
 
     def show
+      authorize @bulletin
     end
 
     def publish
+      authorize @bulletin
       if @bulletin.publish!
         redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_published')
       else
@@ -23,6 +25,7 @@ module Web
     end
 
     def reject
+      authorize @bulletin
       if @bulletin.reject!
         redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_rejected')
       else
@@ -31,6 +34,7 @@ module Web
     end
 
     def archive
+      authorize @bulletin
       if @bulletin.archive!
         redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_archived')
       else

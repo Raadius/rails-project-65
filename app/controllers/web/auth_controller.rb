@@ -10,6 +10,7 @@ module Web
 
       user = User.find_or_initialize_by(email:)
       user.name = name
+      user.admin = true if user.new_record?
 
       if user.save!
         sign_in(user)
@@ -23,8 +24,8 @@ module Web
       redirect_to root_path, alert: t('notices.user.auth_error')
     end
 
-    def destroy
-      session[:user_id] = nil
+    def logout
+      reset_session
       redirect_to root_path, notice: t('notices.user.logged_out')
     end
   end

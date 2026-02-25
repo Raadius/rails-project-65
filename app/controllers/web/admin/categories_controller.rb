@@ -9,12 +9,16 @@ module Web
 
     def new
       @category = Category.new
+      authorize @category
     end
 
     def edit
+      authorize @category
     end
+
     def create
       @category = Category.new(category_params)
+      authorize @category
 
       if @category.save
         redirect_to admin_categories_path, notice: t('notices.admin.category_created')
@@ -24,6 +28,7 @@ module Web
     end
 
     def update
+      authorize @category
       if @category.update(category_params)
         redirect_to admin_categories_path, notice: t('notices.admin.category_updated')
       else
@@ -32,6 +37,7 @@ module Web
     end
 
     def destroy
+      authorize @category
       @category.destroy
       redirect_to admin_categories_path, notice: t('notices.admin.category_destroyed')
     rescue ActiveRecord::DeleteRestrictionError

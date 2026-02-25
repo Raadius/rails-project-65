@@ -48,4 +48,3 @@ class BulletinPolicy
     @user&.admin?
   end
 end
-

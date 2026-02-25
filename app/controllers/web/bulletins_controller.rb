@@ -64,7 +64,6 @@ class Web::BulletinsController < Web::ApplicationController
     return redirect_back fallback_location: root_path,
                          notice: t('notices.bulletins.archive_error') unless @bulletin.may_archive?
 
-
     @bulletin.archive!
     redirect_to profile_path, notice: t('notices.bulletins.archived')
   end

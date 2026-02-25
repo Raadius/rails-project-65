@@ -2,8 +2,6 @@
 
 module Web
   class Admin::BulletinsController < Admin::ApplicationController
-    before_action :set_bulletin, only: %i[show publish reject archive]
-
     def index
       @q = Bulletin.order(created_at: :desc).includes(:category, :user).ransack(params[:q])
       @bulletins = @q.result.page(params[:page])
@@ -12,40 +10,38 @@ module Web
     end
 
     def show
+      @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
     end
 
     def publish
-      authorize @bulletin
-      if @bulletin.publish!
-        redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_published')
-      else
-        redirect_to admin_bulletins_path, alert: t('alerts.admin.bulletin_publish_error')
-      end
+      @bulletin = Bulletin.find(params[:id])
+
+      redirect_to admin_bulletins_path,
+                  alert: t('alerts.admin.bulletin_publish_error') unless @bulletin.may_publish?
+
+      @bulletin.publish!
+      redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_published')
     end
 
     def reject
-      authorize @bulletin
-      if @bulletin.reject!
-        redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_rejected')
-      else
-        redirect_to admin_bulletins_path, alert: t('alerts.admin.bulletin_reject_error')
-      end
+      @bulletin = Bulletin.find(params[:id])
+
+      redirect_to admin_bulletins_path,
+                  alert: t('alerts.admin.bulletin_reject_error') unless @bulletin.may_reject?
+
+      @bulletin.reject!
+      redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_rejected')
     end
 
     def archive
-      authorize @bulletin
-      if @bulletin.archive!
-        redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_archived')
-      else
-        redirect_to admin_bulletins_path, alert: t('alerts.admin.bulletin_archive_error')
-      end
-    end
-
-    private
-
-    def set_bulletin
       @bulletin = Bulletin.find(params[:id])
+
+      redirect_to admin_bulletins_path,
+                  alert: t('alerts.admin.bulletin_archive_error') unless @bulletin.may_archive?
+
+      @bulletin.archive!
+      redirect_to admin_bulletins_path, notice: t('notices.admin.bulletin_archived')
     end
   end
 end

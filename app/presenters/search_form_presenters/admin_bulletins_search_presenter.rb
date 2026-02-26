@@ -3,8 +3,7 @@
 module SearchFormPresenters
   class AdminBulletinsSearchPresenter < SearchFormPresenter
     def initialize
-      super
-      @url = Rails.application.routes.url_helpers.admin_bulletins_path
+      super(Rails.application.routes.url_helpers.admin_bulletins_path)
     end
 
     def select?

@@ -4,6 +4,10 @@ module SearchFormPresenters
   class SearchFormPresenter
     attr_reader :url
 
+    def initialize(url)
+      @url = url
+    end
+
     def select?
       false
     end

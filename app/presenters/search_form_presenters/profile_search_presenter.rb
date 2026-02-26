@@ -3,8 +3,7 @@
 module SearchFormPresenters
   class ProfileSearchPresenter < SearchFormPresenter
     def initialize
-      super
-      @url = Rails.application.routes.url_helpers.profile_path
+      super(Rails.application.routes.url_helpers.profile_path)
     end
 
     def select?

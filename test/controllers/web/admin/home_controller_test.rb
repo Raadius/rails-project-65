@@ -27,7 +27,7 @@ module Web
         assert_response :success
       end
 
-      test 'admin should see only under_moderation bulletins' do
+      test 'admin should see only on_moderation bulletins' do
         sign_in(@admin)
         get admin_root_url
 

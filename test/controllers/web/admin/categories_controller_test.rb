@@ -63,7 +63,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_categories_path
   end
 
-  test 'should not delete category with bulletins' do
+  test 'should not delete category with linked bulletins' do
     delete admin_category_path(@multiple_bulletins_category)
 
     deleted_category = Category.find_by(id: @multiple_bulletins_category.id)
@@ -71,7 +71,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil deleted_category
   end
 
-  test 'should delete emtpy category' do
+  test 'should delete empty category' do
     assert_difference('Category.count', -1) do
       delete admin_category_path(@empty_category)
     end

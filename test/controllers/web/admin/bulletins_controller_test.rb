@@ -25,12 +25,12 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test 'should get on_moderation' do
+  test 'should get on moderation bulletins' do
     get admin_root_url
     assert_response :success
   end
 
-  test 'should redirect to root if use is not an admin' do
+  test 'should redirect to root if user is not an admin' do
     sign_in(@user)
 
     get admin_bulletins_url

@@ -59,7 +59,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to bulletin_path(created_bulletin)
   end
 
-  test 'should not create test if user is not logged in' do
+  test 'should not create bulletin if user is not logged in' do
     upload_file_name = 'fixtures_image.jpg'
 
     attrs = {
@@ -73,7 +73,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
 
-  test 'should not show notpublished bulletin' do
+  test 'should not show not published bulletin' do
     get bulletin_path(@bulletin)
     assert_response :redirect
   end

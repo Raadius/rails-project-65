@@ -1,50 +1,27 @@
 # frozen_string_literal: true
 
-class BulletinPolicy
-  attr_reader :user, :bulletin
-
-  def initialize(user, bulletin)
-    @user = user
-    @bulletin = bulletin
-  end
-
+class BulletinPolicy < ApplicationPolicy
   def show?
-    return true if @bulletin.published? || @user&.admin?
-
-    @bulletin.user == @user
-  end
-
-  def edit?
-    update?
+    record.published? || user&.admin? || author?
   end
 
   def update?
-    return true if @user&.admin?
-
-    @bulletin.user == @user && (@bulletin.draft? || @bulletin.rejected?)
+    author? && (record.draft? || record.rejected?)
   end
 
   def author?
-    @bulletin.user == @user
+    record.user == user
   end
 
   def archive?
-    author? || @user&.admin?
+    author?
   end
 
   def to_moderate?
-    author? || @user&.admin?
+    author?
   end
 
   def restore_from_archive?
-    author? || @user&.admin?
-  end
-
-  def publish?
-    @user&.admin?
-  end
-
-  def reject?
-    @user&.admin?
+    author?
   end
 end

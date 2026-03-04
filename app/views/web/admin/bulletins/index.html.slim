@@ -21,7 +21,7 @@
             td = link_to bulletin.title, admin_bulletin_path(bulletin)
             td
               span.badge class=state_badge_class(bulletin.state)
-                = t("bulletin.states.#{bulletin.state}")
+                = bulletin.aasm.human_state
             td = l bulletin.created_at, format: :short
             td
               - unless bulletin.archived?

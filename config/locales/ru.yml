@@ -62,7 +62,22 @@ ru:
       category_not_found: "Категория не найдена"
       category_destroyed: "Категория успешно удалена"
       category_destroy_error: "Произошла ошибка при удалении категории. Повторите попытку позже"
+  web:
+    bulletins:
+      index:
+        title: "Объявления"
+        empty: "Пока что объявлений нет"
   activerecord:
+    attributes:
+      category:
+        name: "Название категории"
+      bulletin:
+        state:
+          draft: "Черновик"
+          under_moderation: "На модерации"
+          published: "Опубликовано"
+          rejected: "Отклонено"
+          archived: "В архиве"
     errors:
       models:
         bulletin:

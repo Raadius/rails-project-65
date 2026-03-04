@@ -11,7 +11,6 @@ module Web
 
     def show
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
     end
 
     def destroy
@@ -22,35 +21,32 @@ module Web
 
     def publish
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-
-      if @bulletin.publish!
-        redirect_to admin_root_path, notice: t('notices.admin.bulletin_published')
-      else
-        redirect_to admin_root_path, alert: t('alerts.admin.bulletin_publish_error')
+      unless @bulletin.may_publish?
+        return redirect_to admin_root_path, alert: t('alerts.admin.bulletin_publish_error')
       end
+
+      @bulletin.publish!
+      redirect_to admin_root_path, notice: t('notices.admin.bulletin_published')
     end
 
     def reject
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-
-      if @bulletin.reject!
-        redirect_to admin_root_path, notice: t('notices.admin.bulletin_rejected')
-      else
-        redirect_to admin_root_path, alert: t('alerts.admin.bulletin_reject_error')
+      unless @bulletin.may_reject?
+        return redirect_to admin_root_path, alert: t('alerts.admin.bulletin_reject_error')
       end
+
+      @bulletin.reject!
+      redirect_to admin_root_path, notice: t('notices.admin.bulletin_rejected')
     end
 
     def archive
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-
-      if @bulletin.archive!
-        redirect_to admin_root_path, notice: t('notices.admin.bulletin_archived')
-      else
-        redirect_to admin_root_path, alert: t('alerts.admin.bulletin_archive_error')
+      unless @bulletin.may_archive?
+        return redirect_to admin_root_path, alert: t('alerts.admin.bulletin_archive_error')
       end
+
+      @bulletin.archive!
+      redirect_to admin_root_path, notice: t('notices.admin.bulletin_archived')
     end
   end
 end

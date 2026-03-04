@@ -12,7 +12,7 @@
           h5.card-title = @bulletin.user.name
           p.card-text
             span.badge class=state_badge_class(@bulletin.state)
-              = t("bulletin.states.#{@bulletin.state}")
+              = @bulletin.aasm.human_state
           p.card-text
             small.text-muted = @bulletin.category.name
           p.card-text

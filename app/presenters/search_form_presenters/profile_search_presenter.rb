@@ -23,7 +23,7 @@ module SearchFormPresenters
     end
 
     def select_options
-      Bulletin.aasm.states.map { |s| [I18n.t("bulletin.states.#{s.name}"), s.name] }
+      Bulletin.aasm.states.map { |s| [s.human_name, s.name] }
     end
   end
 end

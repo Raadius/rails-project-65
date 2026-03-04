@@ -8,7 +8,7 @@
                   date: l(@bulletin.created_at, format: :short))
         div
           span.badge.fs-5 class=state_badge_class(@bulletin.state)
-            = t("bulletin.states.#{@bulletin.state}")
+            = @bulletin.aasm.human_state
 
       .mb-3
         = link_to t('actions.back'), admin_bulletins_path, class: 'btn btn-secondary'

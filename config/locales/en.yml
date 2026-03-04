@@ -62,7 +62,22 @@ en:
       category_not_found: "Category not found"
       category_destroyed: "Category destroyed successfully"
       category_destroy_error: "An error occurred during category destruction. Try again later"
+  web:
+    bulletins:
+      index:
+        title: "Bulletins list"
+        empty: "No bulletins yet"
   activerecord:
+    attributes:
+      category:
+        name: "Category name"
+      bulletin:
+        state:
+          draft: "Draft"
+          under_moderation: "On moderation"
+          published: "Published"
+          rejected: "Rejected"
+          archived: "Archived"
     errors:
       models:
         bulletin:
